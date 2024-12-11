@@ -1,0 +1,84 @@
+/* General Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #add8e6; /* Baby blue background */
+    color: #333333; /* Darker gray text for better readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Workout Output Styles */
+#workout-output {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffffff; /* White background for contrast */
+    color: #333333; /* Dark text color */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em; /* Slightly larger text for readability */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in effect */
+    opacity: 0; /* Start hidden */
+}
+
+/* Fade-in Animation */
+.fade-in {
+    opacity: 1 !important; /* Make visible when fade-in class is added */
+}
+
+/* Button Style */
+.btn {
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 0; /* Adjusted padding to fit the text */
+    font-size: 1.1em; /* Slightly larger font size */
+    width: 100%; /* Ensure it fills the parent container if required */
+    text-align: center; /* Center-align text */
+    display: inline-block; /* Prevents button resizing issues */
+    cursor: pointer; /* Cursor pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    line-height: 1.5; /* Vertical alignment adjustment */
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background-color: #333333; /* Darker shade of the button for hover effect */
+}
+
+/* Form Input Styles */
+input[type="text"],
+select {
+    border: 1px solid #333333; /* Darker border for form inputs */
+    padding: 10px; /* Add padding for better readability */
+    border-radius: 4px; /* Rounded corners for inputs */
+    font-size: 1em; /* Standard font size for inputs */
+}
+
+/* Container and Section Styling */
+.container {
+    margin-top: 30px; /* Space for the entire container */
+}
+
+.section {
+    margin-top: 30px; /* Space above sections */
+}
+
+/* Responsive Columns */
+@media (max-width: 768px) {
+    .col {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
+}
+
+@media (min-width: 769px) {
+    .col {
+        flex: 1 1 30%; /* 3 columns on medium screens and above */
+    }
+}
+
+/* Image Styles */
+.responsive-img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
+}

@@ -1,21 +1,22 @@
 {
-  "name": "Workout Generator",
-  "short_name": "WorkoutGen",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2196F3",
-  "description": "Generate custom workout plans based on your fitness level and goals.",
-  "icons": [
+    "name": "Workout Generator",
+    "short_name": "WorkoutGen",
+    "start_url": "index.html",
+    "display": "standalone",
+    "theme_color": "#2196F3",
+    "background_color": "#ffffff",
+    "icons": [
       {
-          "src": "icon-192x192.png",
-          "sizes": "192x192",
-          "type": "image/png"
+        "src": "/images/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
       },
       {
-          "src": "icon-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png"
+        "src": "/images/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
       }
-  ]
-}
+    ],
+    "orientation": "portrait-primary"
+  }
+  

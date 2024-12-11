@@ -38,7 +38,8 @@ document.getElementById('workout-form').addEventListener('submit', function(even
     console.log("Fitness Level:", fitnessLevel);
     console.log("Goal:", goal);
 
-    if (fitnessLevel && goal) {
+    // Validate selections
+    if (fitnessLevel && goal && workouts[fitnessLevel] && workouts[fitnessLevel][goal]) {
         // Retrieve the workout list based on selections
         const workoutList = workouts[fitnessLevel][goal];
         const output = `
@@ -48,10 +49,18 @@ document.getElementById('workout-form').addEventListener('submit', function(even
             </ul>`;
 
         // Insert the workout list into the output div
-        document.getElementById('workout-output').innerHTML = output;
+        const workoutOutputDiv = document.getElementById('workout-output');
+        workoutOutputDiv.innerHTML = output;
 
         // Add fade-in effect
-        document.getElementById('workout-output').classList.add('fade-in');
+        workoutOutputDiv.classList.add('fade-in');
+
+        // Reset the fade-in effect to trigger animation again
+        setTimeout(function() {
+            workoutOutputDiv.classList.remove('fade-in');
+            workoutOutputDiv.classList.add('fade-in');
+        }, 10); // Delay to ensure the animation re-applies
+
     } else {
         alert('Please select both your fitness level and goal.');
     }

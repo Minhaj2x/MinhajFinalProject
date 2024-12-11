@@ -5,100 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json"> <!-- Link to manifest for PWA -->
-    <style>
-        /* General Body Styles */
-        body {
-            font-family: 'Roboto', sans-serif; /* Use Roboto for a modern look */
-            background-color: #add8e6; /* Baby blue background */
-            color: #000000; /* Black text for readability */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-        }
-
-        /* Navigation Styles */
-        nav {
-            padding: 0; /* Remove padding from the nav */
-        }
-
-        .brand-logo {
-            font-size: 2rem; /* Larger font size for the logo */
-            color: #000000; /* Black text color for the logo */
-            margin-top: 10px; /* Reduced margin to lift the logo higher */
-        }
-
-        /* Container Styles */
-        .container {
-            margin-top: 30px; /* Space for the entire container */
-        }
-
-        /* Headings */
-        h1 {
-            color: #000000; /* Black color for headings */
-            margin-top: 40px; /* Increased margin for spacing from the logo */
-        }
-
-        h2 {
-            color: #000000; /* Black color for subheadings */
-        }
-
-        /* Form Styles */
-        input[type="text"],
-        select {
-            border: 1px solid #000000; /* Border color */
-        }
-
-        .btn {
-            background-color: #000000; /* Button color */
-            color: #ffffff; /* Button text color */
-        }
-
-        /* Workout Output Styles */
-        #workout-output {
-            margin-top: 20px; /* Space above workout output */
-            padding: 15px; /* Padding around workout output */
-            background-color: #ffffff; /* White background for output */
-            border-radius: 5px; /* Rounded corners */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-        }
-
-        /* Recommended Workouts */
-        .section {
-            margin-top: 30px; /* Space above sections */
-        }
-
-        /* Responsive Layout for Recommended Workouts */
-        .row {
-            display: flex; /* Use flexbox for responsiveness */
-            flex-wrap: wrap; /* Wrap items in flex */
-            justify-content: space-between; /* Space items evenly */
-        }
-
-        .col {
-            padding: 10px; /* Padding for columns */
-        }
-
-        /* Responsive Columns */
-        @media (max-width: 768px) {
-            .col {
-                flex: 1 1 100%; /* Full width on small screens */
-            }
-        }
-
-        @media (min-width: 769px) {
-            .col {
-                flex: 1 1 30%; /* 3 columns on medium screens and above */
-            }
-        }
-
-        /* Image Styles */
-        .responsive-img {
-            max-width: 100%; /* Ensure images are responsive */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 5px; /* Rounded corners for images */
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" sizes="192x192" href="/images/flexibility.jpg">
 </head>
 <body>
     <nav class="black">
@@ -108,11 +17,9 @@
     </nav>
     <div class="container">
         <h1 class="center-align">Generate Your Workout</h1>
-        
-        <!-- User Input Form -->
         <form id="workout-form">
             <div class="input-field">
-                <select id="fitness-level">
+                <select id="fitness-level" required>
                     <option value="" disabled selected>Choose your fitness level</option>
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
@@ -121,66 +28,23 @@
                 <label>Fitness Level</label>
             </div>
             <div class="input-field">
-                <select id="goal">
+                <select id="goal" required>
                     <option value="" disabled selected>Choose your goal</option>
                     <option value="weight-loss">Weight Loss</option>
                     <option value="muscle-gain">Muscle Gain</option>
                     <option value="endurance">Endurance</option>
                     <option value="flexibility">Flexibility</option>
-                    <option value="overall-fitness">Overall Fitness</option>
                 </select>
                 <label>Fitness Goal</label>
             </div>
-            <button type="submit" class="btn">Generate Workout</button>
+            <button type="submit" class="btn" id="generate-workout">Generate Workout</button>
         </form>
-
-        <!-- Placeholder for Workout Output -->
         <div id="workout-output" class="section"></div>
-
-        <!-- Recommended Workouts -->
-        <div class="section">
-            <h2>Recommended Workouts</h2>
-            <div class="row">
-                <div class="col s12 m4">
-                    <h5>Strength Training</h5>
-                    <img src="images/strength-training.jpg" alt="Strength Training" class="responsive-img">
-                    <p>Build muscle with effective strength training routines.</p>
-                    <ul>
-                        <li>Deadlifts</li>
-                        <li>Squats</li>
-                        <li>Bench Press</li>
-                    </ul>
-                </div>
-                <div class="col s12 m4">
-                    <h5>Cardio</h5>
-                    <img src="images/cardio.jpg" alt="Cardio" class="responsive-img">
-                    <p>Increase your heart health with these cardio workouts.</p>
-                    <ul>
-                        <li>Running</li>
-                        <li>Cycling</li>
-                        <li>Swimming</li>
-                    </ul>
-                </div>
-                <div class="col s12 m4">
-                    <h5>Flexibility</h5>
-                    <img src="images/flexibility.jpg" alt="Flexibility" class="responsive-img">
-                    <p>Enhance your flexibility and prevent injuries.</p>
-                    <ul>
-                        <li>Yoga</li>
-                        <li>Pilates</li>
-                        <li>Static Stretching</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Placeholder for Additional Content -->
-        <div class="section">
-            <h2>Tips for Success</h2>
-            <p>Stay consistent, listen to your body, and make sure to hydrate. Remember, every small step counts towards your fitness journey!</p>
-        </div>
     </div>
-    <script src="script.js"></script> <!-- Link to your JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/firebaseConfig.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/firebaseDB.js"></script>
+    <script src="/js/indexDB.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
