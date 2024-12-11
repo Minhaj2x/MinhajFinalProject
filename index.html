@@ -5,46 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" sizes="192x192" href="/images/flexibility.jpg">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #ff6f00;
+        }
+        .brand-logo {
+            font-size: 1.8rem;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .input-field label {
+            font-size: 1rem;
+        }
+        select {
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #ff6f00;
+            width: 100%;
+            height: 50px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: #ff6f00;
+            color: white;
+        }
+    </style>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA4qahXrROgVfsDri9idYrQ3l5NIbWU-F0",
+            authDomain: "workout-generator-a56f3.firebaseapp.com",
+            projectId: "workout-generator-a56f3",
+            storageBucket: "workout-generator-a56f3.appspot.com",
+            messagingSenderId: "1030097680505",
+            appId: "1:1030097680505:web:f227c49edc634488d53ca8",
+            measurementId: "G-MMCC2VP5NV"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const messaging = getMessaging(app);
+
+        // Example Authentication Logic
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                console.log(`User logged in: ${user.email}`);
+            } else {
+                console.log("User not signed in.");
+            }
+        });
+
+        // Example Messaging Logic
+        getToken(messaging, { vapidKey: "YAIzaSyA4qahXrROgVfsDri9idYrQ3l5NIbWU-F0" })
+            .then(currentToken => {
+                if (currentToken) {
+                    console.log("Token received: ", currentToken);
+                } else {
+                    console.log("No registration token available.");
+                }
+            })
+            .catch(err => {
+                console.error("Error fetching token: ", err);
+            });
+    </script>
 </head>
 <body>
-    <nav class="black">
+    <nav>
         <div class="container">
             <a href="#" class="brand-logo">Workout Generator</a>
         </div>
     </nav>
     <div class="container">
-        <h1 class="center-align">Generate Your Workout</h1>
+        <h1>Create Your Personalized Workout</h1>
         <form id="workout-form">
             <div class="input-field">
-                <select id="fitness-level" required>
+                <select id="fitness-level">
                     <option value="" disabled selected>Choose your fitness level</option>
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
                     <option value="advanced">Advanced</option>
                 </select>
-                <label>Fitness Level</label>
+                <label for="fitness-level">Fitness Level</label>
             </div>
             <div class="input-field">
-                <select id="goal" required>
+                <select id="goal">
                     <option value="" disabled selected>Choose your goal</option>
                     <option value="weight-loss">Weight Loss</option>
                     <option value="muscle-gain">Muscle Gain</option>
                     <option value="endurance">Endurance</option>
                     <option value="flexibility">Flexibility</option>
                 </select>
-                <label>Fitness Goal</label>
+                <label for="goal">Fitness Goal</label>
             </div>
-            <button type="submit" class="btn" id="generate-workout">Generate Workout</button>
+            <button type="submit" class="btn">Generate Workout</button>
         </form>
-        <div id="workout-output" class="section"></div>
     </div>
-    <script src="/js/firebaseConfig.js"></script>
-    <script src="/js/auth.js"></script>
-    <script src="/js/firebaseDB.js"></script>
-    <script src="/js/indexDB.js"></script>
-    <script src="/js/script.js"></script>
+    <footer>
+        &copy; 2024 Workout Generator. All rights reserved.
+    </footer>
 </body>
 </html>
+
+<script>
+    // Adding user-friendly prompts for notifications and installation
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready.then(registration => {
+            console.log('Service Worker Ready:', registration);
+        });
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        console.log('Install Prompt triggered', e);
+    });
+</script>
